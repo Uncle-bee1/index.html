@@ -3,126 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Registration Portal</title>
+    <title>Professor Bee - Mathematical Excellence</title>
+    ‎<img src="logo.jpg" alt="Logo" class="top-right-logo">
     <style>
         :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --light-bg: #f4f7f6;
-            --white: #ffffff;
-            --logo-opacity: 0.05; /* Controls how faint the background logo is */
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --success: #4ade80;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --bee-yellow: #ffde59;
+            --bee-black: #231f20;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--secondary-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        /* Hero Section */
+        .hero {
             position: relative;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* --- BACKGROUND LOGO WATERMARK --- */
-        .background-logo {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw;
-            max-width: 600px;
-            height: auto;
-            opacity: var(--logo-opacity);
-            z-index: -1;
-            pointer-events: none;
+            height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234361ee"/><path d="M20,40 Q40,20 60,40 T100,40 L100,60 L60,60 Q40,80 20,60 Z" fill="%234cc9f0"/></svg>');
+            background-size: cover;
+            background-position: center;
         }
 
-        /* CSS-Only Logo Representation (Replace with <img> if you have a file) */        .logo-graphic {
-            font-size: 15vw;
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            background-color: var(--bee-yellow);
+            color: var(--bee-black);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
             font-weight: bold;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            border: 5px solid var(--primary-color);
-            padding: 20px 40px;
-            border-radius: 15px;
-            transform: rotate(-15deg);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        /* If you have an image file, use this class instead inside .background-logo:
-           .background-logo img { width: 100%; height: auto; } 
-        */
+        .cta-button:hover {
+            background-color: #ffd22a;
+            transform: scale(1.05);
+        }
 
-        /* --- HEADER & NAV --- */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+        /* Navigation */
+        nav {
+            position: fixed;
             top: 0;
-            z-index: 100;
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .brand-logo {
-            font-size: 1.5rem;
+        .logo {            font-size: 1.8rem;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 10px;
         }
 
-        .brand-logo span {
-            background: var(--primary-color);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
+        .logo-icon {
+            margin-right: 10px;
+            color: var(--bee-yellow);
         }
-        .nav-links button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-left: 15px;
-            color: var(--secondary-color);
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
             transition: color 0.3s;
         }
 
-        .nav-links button:hover {
-            color: var(--primary-color);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        /* --- MAIN CONTENT --- */
-        .container {
+        /* Sections */
+        section {
+            padding: 80px 20px;
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            position: relative;
-            z-index: 1;
+            margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--secondary-color);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
         }
 
         /* Currency Selector */
@@ -132,238 +146,355 @@
         }
 
         .currency-btn {
-            padding: 8px 16px;
-            border: 1px solid var(--primary-color);
-            background: transparent;
-            color: var(--primary-color);
-            cursor: pointer;
-            border-radius: 20px;
+            background: var(--primary);            color: white;
+            border: none;
+            padding: 10px 20px;
             margin: 0 5px;
+            border-radius: 20px;
+            cursor: pointer;
             transition: all 0.3s;
         }
 
-        .currency-btn.active, .currency-btn:hover {
-            background: var(--primary-color);
-            color: var(--white);
+        .currency-btn.active {
+            background: var(--secondary);
         }
-        /* Grid Layouts */
-        .grid-container {
+
+        /* Course Cards */
+        .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 30px;
         }
 
-        /* Cards */
-        .card {
-            background: var(--white);
+        .course-card {
+            background: white;
             border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .course-card:hover {
+            transform: translateY(-10px);
         }
 
-        .card h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
+        .course-content {
+            padding: 20px;
         }
 
-        .price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin: 1rem 0;
+        .course-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
         }
 
-        .btn-primary {
-            background: var(--primary-color);
+        .course-desc {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .course-price {
+            font-size: 1.3rem;
+            font-weight: bold;            color: var(--success);
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            width: 100%;
             font-size: 1rem;
             transition: background 0.3s;
         }
 
-        .btn-primary:hover {            background: #357abd;
+        .buy-btn:hover {
+            background: var(--secondary);
         }
 
-        /* Form Styles */
-        .form-container {
-            background: var(--white);
-            padding: 2rem;
+        /* Tutor Section */
+        .tutors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tutor-card {
+            background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .tutor-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .tutor-specialty {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .register-btn {
+            background: var(--accent);
+            color: white;
+            border: none;            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #3ab0d3;
+        }
+
+        /* Registration Form */
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             max-width: 600px;
             margin: 0 auto;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            margin-bottom: 5px;
+            font-weight: 500;
         }
 
-        .form-group input, 
+        .form-group input,
         .form-group select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
         }
 
-        /* --- MOBILE RESPONSIVENESS --- */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s;        }
+
+        .submit-btn:hover {
+            background: #3bc574;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                display: flex;
-                gap: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-links button {
-                margin: 0 5px;
-                font-size: 0.9rem;
-            }
-            .grid-container {
-                grid-template-columns: 1fr; /* Stack cards on mobile */
-            }
-
-            .logo-graphic {
-                font-size: 20vw; /* Larger logo on mobile background */
-                border-width: 3px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            .form-container {
-                padding: 1.5rem;
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Background Watermark Logo -->
-    <div class="background-logo">
-        <!-- Option A: CSS Logo (Current) -->
-        <div class="logo-graphic">EDU</div>
-        
-        <!-- Option B: Image Logo (Uncomment below and add your file path to use an image) -->
-        <!-- <img src="your-logo.png" alt="Background Logo"> -->
-    </div>
-
-    <header>
-        <div class="navbar">
-            <div class="brand-logo">
-                <span>EDU</span> Portal
-            </div>
-            <nav class="nav-links">
-                <button onclick="scrollToSection('courses')">Courses</button>
-                <button onclick="scrollToSection('tutors')">Tutors</button>
-                <button onclick="scrollToSection('register')">Register</button>
-            </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">🐝</span> Professor Bee
         </div>
-    </header>
+        <div class="nav-links">
+            <a href="#courses">Courses</a>
+            <a href="#tutors">Tutors</a>
+            <a href="#register">Register</a>
+        </div>
+    </nav>
 
-    <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Master Mathematics with Professor Bee</h1>
+            <p>A work in progress, the future is assured</p>            <a href="#courses" class="cta-button">Start Learning Now</a>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <h2 class="section-title">Mathematics Courses</h2>
         
-        <!-- Currency Section -->
         <div class="currency-selector">
-            <h3>Select Currency</h3>
-            <br>
-            <button class="currency-btn active" onclick="setCurrency('USD')">USD ($)</button>
-            <button class="currency-btn" onclick="setCurrency('NGN')">NGN (₦)</button>
-            <button class="currency-btn" onclick="setCurrency('EUR')">EUR (€)</button>
+            <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+            <button class="currency-btn" data-currency="USD">$ USD</button>
         </div>
-        <!-- Courses Section -->
-        <h2 id="courses" class="section-title">Available Courses</h2>
-        <div class="grid-container" id="courseList">
-            <!-- Courses will be injected here by JS -->
+        
+        <div class="courses-grid" id="coursesContainer">
+            <!-- Courses will be populated by JavaScript -->
         </div>
+    </section>
 
-        <!-- Tutors Section -->
-        <h2 id="tutors" class="section-title">Our Tutors</h2>
-        <div class="grid-container" id="tutorList">
-            <!-- Tutors will be injected here by JS -->
+    <!-- Tutors Section -->
+    <section id="tutors">
+        <h2 class="section-title">Expert Tutors</h2>
+        <div class="tutors-grid" id="tutorsContainer">
+            <!-- Tutors will be populated by JavaScript -->
         </div>
+    </section>
 
-        <!-- Registration Form Section -->
-        <h2 id="register" class="section-title">Student Registration</h2>
+    <!-- Registration Form -->
+    <section id="register">
+        <h2 class="section-title">Student Registration</h2>
         <div class="form-container">
             <form id="registrationForm">
                 <div class="form-group">
                     <label for="studentName">Full Name</label>
-                    <input type="text" id="studentName" required placeholder="Enter your name">
+                    <input type="text" id="studentName" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="studentEmail">Email Address</label>
-                    <input type="email" id="studentEmail" required placeholder="Enter your email">
+                    <input type="email" id="studentEmail" required>
                 </div>
-
+                
                 <div class="form-group">
                     <label for="selectedCourse">Select Course</label>
                     <select id="selectedCourse" required>
-                        <option value="">-- Choose a Course --</option>
+                        <option value="">Choose a course</option>
+                        <!-- Options will be populated by JavaScript -->
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label for="selectedTutor">Select Preferred Tutor</label>
+                
+                <div class="form-group">                    <label for="selectedTutor">Select Tutor</label>
                     <select id="selectedTutor" required>
-                        <option value="">-- Choose a Tutor --</option>
+                        <option value="">Choose a tutor</option>
+                        <!-- Options will be populated by JavaScript -->
                     </select>
                 </div>
-
-                <button type="submit" class="btn-primary">Complete Registration</button>
+                
+                <button type="submit" class="submit-btn">Complete Registration</button>
             </form>
         </div>
-
-    </div>
+    </section>
 
     <script>
-        // Sample Data
-        const courses = [            { id: 1, name: "Web Development", priceUSD: 100, priceNGN: 150000, priceEUR: 90 },
-            { id: 2, name: "Data Science", priceUSD: 120, priceNGN: 180000, priceEUR: 110 },
-            { id: 3, name: "UI/UX Design", priceUSD: 90, priceNGN: 135000, priceEUR: 80 },
-            { id: 4, name: "Python Programming", priceUSD: 110, priceNGN: 165000, priceEUR: 100 }
+        // Data
+        const courses = [
+            { id: 1, name: "Geometry", desc: "Learn shapes, angles, and spatial relationships" },
+            { id: 2, name: "Statistics", desc: "Understand data analysis and probability" },
+            { id: 3, name: "Differentiation", desc: "Master derivatives and rates of change" },
+            { id: 4, name: "Integration", desc: "Learn about areas under curves and accumulation" },
+            { id: 5, name: "Linear Equations", desc: "Solve systems of linear equations" },
+            { id: 6, name: "Quadratic Equations", desc: "Master quadratic formula and factoring" },
+            { id: 7, name: "Numbers", desc: "Explore number theory and properties" },
+            { id: 8, name: "Series", desc: "Study sequences and infinite series" }
         ];
 
         const tutors = [
-            { id: 101, name: "Dr. Sarah Johnson" },
-            { id: 102, name: "Mr. David Okon" },
-            { id: 103, name: "Ms. Emily Chen" },
-            { id: 104, name: "Prof. Ahmed Musa" }
+            { id: 101, name: "Dr. Sarah Johnson", specialty: "Calculus & Algebra" },
+            { id: 102, name: "Mr. David Chen", specialty: "Geometry & Trigonometry" },
+            { id: 103, name: "Prof. Amina Yusuf", specialty: "Statistics & Probability" },
+            { id: 104, name: "Mr. James Wilson", specialty: "Number Theory & Series" }
         ];
 
-        let currentCurrency = 'USD';
+        // Pricing
+        const prices = {
+            NGN: 3000,
+            USD: 5
+        };
 
-        // Initialize Page
-        function initPage() {
-            const courseSelect = document.getElementById('selectedCourse');
-            const tutorSelect = document.getElementById('selectedTutor');
-            const courseList = document.getElementById('courseList');
-            const tutorList = document.getElementById('tutorList');
+        let currentCurrency = 'NGN';
 
-            // Populate Dropdowns
+        // DOM Elements
+        const coursesContainer = document.getElementById('coursesContainer');
+        const tutorsContainer = document.getElementById('tutorsContainer');
+        const courseSelect = document.getElementById('selectedCourse');
+        const tutorSelect = document.getElementById('selectedTutor');
+        const currencyButtons = document.querySelectorAll('.currency-btn');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCourses();            renderTutors();
+            populateDropdowns();
+            setupEventListeners();
+        });
+
+        // Render Courses
+        function renderCourses() {
+            coursesContainer.innerHTML = '';
+            courses.forEach(course => {
+                const price = currentCurrency === 'NGN' ? `${prices.NGN.toLocaleString()} ₦` : `${prices.USD}$`;
+                const card = document.createElement('div');
+                card.className = 'course-card';
+                card.innerHTML = `
+                    <div class="course-content">
+                        <h3 class="course-name">${course.name}</h3>
+                        <p class="course-desc">${course.desc}</p>
+                        <div class="course-price">${price}</div>
+                        <button class="buy-btn" data-id="${course.id}" data-name="${course.name}">Buy Course</button>
+                    </div>
+                `;
+                coursesContainer.appendChild(card);
+            });
+            
+            // Add event listeners to buy buttons
+            document.querySelectorAll('.buy-btn').forEach(button => {
+                button.addEventListener('click', handleBuyCourse);
+            });
+        }
+
+        // Render Tutors
+        function renderTutors() {
+            tutorsContainer.innerHTML = '';
+            tutors.forEach(tutor => {
+                const card = document.createElement('div');
+                card.className = 'tutor-card';
+                card.innerHTML = `
+                    <h3 class="tutor-name">${tutor.name}</h3>
+                    <p class="tutor-specialty">${tutor.specialty}</p>
+                    <button class="register-btn" data-id="${tutor.id}">Register Under Tutor</button>
+                `;
+                tutorsContainer.appendChild(card);
+            });
+            
+            // Add event listeners to register buttons
+            document.querySelectorAll('.register-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const tutorId = e.target.getAttribute('data-id');
+                    const tutor = tutors.find(t => t.id == tutorId);
+                    alert(`Selected tutor: ${tutor.name}. You can now register for a course.`);
+                });            });
+        }
+
+        // Populate Dropdowns
+        function populateDropdowns() {
+            // Populate course dropdown
             courses.forEach(course => {
                 const option = document.createElement('option');
                 option.value = course.id;
@@ -371,133 +502,69 @@
                 courseSelect.appendChild(option);
             });
             
+            // Populate tutor dropdown
             tutors.forEach(tutor => {
                 const option = document.createElement('option');
                 option.value = tutor.id;
                 option.textContent = tutor.name;
                 tutorSelect.appendChild(option);
             });
-
-            // Render Cards
-            renderCourses();
-            renderTutors();
         }
 
-        function renderCourses() {
-            const courseList = document.getElementById('courseList');
-            courseList.innerHTML = '';
-
-            courses.forEach(course => {
-                let priceDisplay = '';
-                if(currentCurrency === 'USD') priceDisplay = `$${course.priceUSD}`;
-                else if(currentCurrency === 'NGN') priceDisplay = `₦${course.priceNGN.toLocaleString()}`;                else if(currentCurrency === 'EUR') priceDisplay = `€${course.priceEUR}`;
-
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div>
-                        <h3>${course.name}</h3>
-                        <p>Comprehensive training module.</p>
-                        <div class="price">${priceDisplay}</div>
-                    </div>
-                    <button class="btn-primary" onclick="purchaseCourse(${course.id}, '${course.name}')">Purchase Course</button>
-                `;
-                courseList.appendChild(card);
-            });
-        }
-
-        function renderTutors() {
-            const tutorList = document.getElementById('tutorList');
-            tutorList.innerHTML = '';
-
-            tutors.forEach(tutor => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div>
-                        <h3>${tutor.name}</h3>
-                        <p>Senior Instructor</p>
-                    </div>
-                    <button class="btn-primary" style="background-color: var(--secondary-color);" onclick="selectTutor(${tutor.id}, '${tutor.name}')">Select Tutor</button>
-                `;
-                tutorList.appendChild(card);
-            });
-        }
-
-        // Set currency and update prices
-        function setCurrency(currency) {
-            currentCurrency = currency;
+        // Handle Buy Course
+        function handleBuyCourse(e) {
+            const courseId = e.target.getAttribute('data-id');
+            const courseName = e.target.getAttribute('data-name');
             
-            // Update currency buttons
-            document.querySelectorAll('.currency-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.textContent.includes(currency)) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Re-render courses to update prices
-            renderCourses();
-        }
-        // Purchase course function
-        function purchaseCourse(courseId, courseName) {
-            alert(`Thank you for purchasing ${courseName}! Your enrollment is confirmed.`);
+            // Simulate purchase
+            alert(`Successfully purchased: ${courseName} (${currentCurrency === 'NGN' ? `${prices.NGN.toLocaleString()} ₦` : `${prices.USD}$`})`);
             
             // Store purchase in localStorage
             const purchases = JSON.parse(localStorage.getItem('purchases')) || [];
-            if (!purchases.includes(courseId)) {
-                purchases.push(courseId);
+            if (!purchases.includes(parseInt(courseId))) {
+                purchases.push(parseInt(courseId));
                 localStorage.setItem('purchases', JSON.stringify(purchases));
             }
         }
 
-        // Select tutor function
-        function selectTutor(tutorId, tutorName) {
-            alert(`You have selected ${tutorName} as your tutor!`);
-            // Optional: Auto-fill the form dropdown
-            document.getElementById('selectedTutor').value = tutorId;
-            scrollToSection('register');
-        }
-
-        // Scroll to section
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if(element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Handle form submission
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        // Handle Form Submission
+        document.getElementById('registrationForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
             const name = document.getElementById('studentName').value;
             const email = document.getElementById('studentEmail').value;
-            const course = document.getElementById('selectedCourse').value;
-            const tutor = document.getElementById('selectedTutor').value;
+            const courseId = document.getElementById('selectedCourse').value;
+            const tutorId = document.getElementById('selectedTutor').value;
             
-            if (name && email && course && tutor) {
-                alert(`Registration successful!\nStudent: ${name}\nEmail: ${email}\nCourse: ${getCourseName(course)}\nTutor: ${getTutorName(tutor)}`);
-                
-                // Reset form
-                this.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
+            if (!name || !email || !courseId || !tutorId) {
+                alert('Please fill in all fields');
+                return;            }
+            
+            const course = courses.find(c => c.id == courseId);
+            const tutor = tutors.find(t => t.id == tutorId);
+            
+            alert(`Registration Successful!\nStudent: ${name}\nCourse: ${course.name}\nTutor: ${tutor.name}`);
+            
+            // Reset form
+            document.getElementById('registrationForm').reset();
         });
 
-        // Helper functions to get names
-        function getCourseName(courseId) {
-            const course = courses.find(c => c.id == courseId);            return course ? course.name : '';
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Currency Selection
+            currencyButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    currentCurrency = e.target.getAttribute('data-currency');
+                    
+                    // Update active button
+                    currencyButtons.forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    // Re-render courses with new currency
+                    renderCourses();
+                });
+            });
         }
-
-        function getTutorName(tutorId) {
-            const tutor = tutors.find(t => t.id == tutorId);
-            return tutor ? tutor.name : '';
-        }
-
-        // Initialize the page when loaded
-        window.addEventListener('load', initPage);
     </script>
 </body>
 </html>
