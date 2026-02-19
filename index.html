@@ -48,8 +48,7 @@
         }
 
         .logo-container {
-            display: flex;            align-items: center;
-            gap: 10px;
+            display: flex;            align-items: center;            gap: 10px;
         }
 
         .logo {
@@ -98,8 +97,7 @@
         }
 
         .hero-content {            max-width: 800px;
-            padding: 20px;
-            z-index: 2;
+            padding: 20px;            z-index: 2;
         }
 
         .hero h1 {
@@ -149,7 +147,6 @@
             position: relative;            display: inline-block;
             width: 100%;
         }
-
         .section-title::after {
             content: "";
             position: absolute;
@@ -198,8 +195,7 @@
             transition: transform 0.3s;            position: relative;
         }
 
-        .course-card:hover {
-            transform: translateY(-10px);
+        .course-card:hover {            transform: translateY(-10px);
         }
 
         .course-badge {
@@ -248,8 +244,7 @@
             transition: background 0.3s;
         }
 
-        .buy-btn:hover {
-            background: var(--secondary);
+        .buy-btn:hover {            background: var(--secondary);
         }
 
         /* Tutor Section */
@@ -298,8 +293,7 @@
             margin-bottom: 15px;
         }
 
-        .register-btn {
-            background: var(--accent);
+        .register-btn {            background: var(--accent);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -348,8 +342,7 @@
         .form-group select {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 1px solid #ddd;            border-radius: 5px;
             font-size: 1rem;
         }
 
@@ -398,8 +391,7 @@
             color: var(--bee-yellow);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        /* Responsive Design */        @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -413,17 +405,17 @@
             }
             
             nav {
-                flex-direction: column;
-                padding: 1rem;
+                flex-direction: row;
+                padding: 1rem 2rem;
             }
             
             .nav-links {
-                margin-top: 1rem;
-                gap: 1rem;
+                margin-top: 0;
+                gap: 1.5rem;
             }
             
             .logo-container {
-                margin-bottom: 10px;
+                margin-bottom: 0;
             }
         }
     </style>
@@ -448,8 +440,7 @@
             <h1>Master Mathematics with Professor Bee</h1>
             <p>A work in progress, the future is assured</p>
             <a href="#courses" class="cta-button">Start Learning Now</a>
-        </div>
-    </section>
+        </div>    </section>
 
     <!-- Courses Section -->
     <section id="courses">
@@ -498,8 +489,7 @@
                 <div class="form-group">
                     <label for="selectedTutor">Select Tutor</label>
                     <select id="selectedTutor" required>
-                        <option value="">Choose a tutor</option>
-                        <!-- Options will be populated by JavaScript -->
+                        <option value="">Choose a tutor</option>                        <!-- Options will be populated by JavaScript -->
                     </select>
                 </div>
                 
@@ -549,7 +539,6 @@
             NGN: 3000,
             USD: 5
         };
-
         let currentCurrency = 'NGN';
 
         // DOM Elements
@@ -598,8 +587,7 @@
                 // Create placeholder image using Placehold.co
                 const card = document.createElement('div');
                 card.className = 'tutor-card';
-                card.innerHTML = `
-                    <img src="https://placehold.co/120x120/${getRandomColor()}/white?text=${tutor.name.charAt(0)}" 
+                card.innerHTML = `                    <img src="https://placehold.co/120x120/${getRandomColor()}/white?text=${tutor.name.charAt(0)}" 
                          alt="${tutor.name}" class="tutor-image">
                     <h3 class="tutor-name">${tutor.name}</h3>
                     <p class="tutor-specialty">${tutor.specialty}</p>
@@ -648,8 +636,7 @@
 
         // Handle Buy Course
         function handleBuyCourse(e) {
-            const courseId = e.target.getAttribute('data-id');
-            const courseName = e.target.getAttribute('data-name');
+            const courseId = e.target.getAttribute('data-id');            const courseName = e.target.getAttribute('data-name');
             
             // Simulate purchase
             alert(`Successfully purchased: ${courseName} (${currentCurrency === 'NGN' ? `${prices.NGN.toLocaleString()} ₦` : `${prices.USD}$`})`);
@@ -698,8 +685,7 @@
                     // Re-render courses with new currency
                     renderCourses();
                 });
-            });
-        }
+            });        }
     </script>
 </body>
 </html>
